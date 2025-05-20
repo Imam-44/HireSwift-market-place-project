@@ -5,9 +5,11 @@ import { Outlet } from 'react-router';
 const HomeLayouts = () => {
   return (
      <>
-      <Navbar/>
+      <header>
+        <Navbar/>
+      </header>
       <Outlet/>
-      
+
      </>
   );
 };
