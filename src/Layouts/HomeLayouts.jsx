@@ -8,7 +8,10 @@ const HomeLayouts = () => {
       <header>
         <Navbar/>
       </header>
-      <Outlet/>
+
+     <main>
+         <Outlet/>
+     </main>
 
      </>
   );

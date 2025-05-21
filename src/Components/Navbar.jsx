@@ -30,7 +30,7 @@ const Navbar = () => {
           <div className="navbar-center hidden lg:flex">
             <ul className="menu menu-horizontal px-1">
               <li className='font-semibold text-lg'> <Link>Home</Link></li>
-              <li className='font-semibold text-lg'>  <Link>Add Task</Link></li>
+              <li className='font-semibold text-lg'>  <Link to='/add-task'>Add Task</Link></li>
               <li className='font-semibold text-lg'> <Link>Browse Tasks</Link></li>
               <li className='font-semibold text-lg'><Link>My Posted Task</Link></li>
 
