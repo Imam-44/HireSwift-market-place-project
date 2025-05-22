@@ -1,12 +1,13 @@
 import { use } from "react";
 import { FcGoogle } from "react-icons/fc";
-import { Link } from "react-router";
+import { Link, useNavigate } from "react-router";
 import { AuthContext } from "../context/authContext";
 import Swal from "sweetalert2";
+import { updateProfile } from "firebase/auth";
 
 const SignUp = () => {
   const { createUser, setUser } = use(AuthContext);
-
+    const navigate = useNavigate();
   const hanldeSignUp = e => {
     e.preventDefault();
     const form = e.target;
@@ -16,36 +17,37 @@ const SignUp = () => {
     const photoUrl = form.photoUrl.value;
     console.log({ name, email, password, photoUrl });
 
-    createUser(email, password)
-      .then((result) => {
-        const user = result.user;
-        console.log(user);
-         if (user) {
-          Swal.fire({
-            icon: "success",
-            title: "your account created successfully",
-            showConfirmButton: false,
-            timer: 1500
-          });
-        }
-        setUser(user);
-       
-      })
-      .catch((error) => {
+   createUser(email, password)
+  .then((result) => {
+    const user = result.user;
 
-        if (error) {
-          Swal.fire({
-            icon: "error",
-            title: "Oops...",
-            text: "Your email already added!",
+    // Profile update here
+    updateProfile(user, {
+      displayName: name,
+      photoURL: photoUrl
+    }).then(() => {
+      setUser({ ...user, displayName: name, photoURL: photoUrl });
 
-          });
-        }
-      })
-    }
+      Swal.fire({
+        icon: "success",
+        title: "Your account created successfully",
+        showConfirmButton: false,
+        timer: 1000
+      });
+      navigate('/')
+    });
 
+  })
 
+  .catch((error) => {
+    Swal.fire({
+      icon: "error",
+      title: "Oops...",
+      text: "Your email already added!",
+    });
+  });
 
+  }
   return (
     <div className="min-h-screen bg-gradient-to-br from-[#0f0c29] via-[#302b63] to-[#24243e] flex items-center justify-center p-6">
       <div className="bg-white shadow-2xl rounded-2xl w-full max-w-md p-8 space-y-6">

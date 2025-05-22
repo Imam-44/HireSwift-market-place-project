@@ -1,6 +1,6 @@
 import React from 'react';
 
-const TaskCard = ({ task }) => {
+const FeaturedTask = ({ task }) => {
   const {
     title,
     category,
@@ -53,4 +53,4 @@ const TaskCard = ({ task }) => {
   );
 };
 
-export default TaskCard;
+export default FeaturedTask;

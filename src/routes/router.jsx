@@ -5,7 +5,7 @@ import AddTask from "../Pages/AddTask";
 import Login from "../Pages/Login";
 import SignUp from "../Pages/SignUp";
 import BrowseTasks from "../Pages/BrowseTasks";
-import TaskCard from "../Components/TaskCard";
+import TaskCard from "../Components/FeaturedTask";
 import TaskDetails from "../Pages/TaskDetails";
 import MyPostedTasks from "../Pages/MyPostedTasks";
 

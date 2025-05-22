@@ -1,8 +1,9 @@
 import React, { use } from 'react';
-import { Link } from 'react-router';
+import { Link, useNavigate } from 'react-router';
 import { AuthContext } from '../context/authContext';
 
 const Navbar = () => {
+
   const { user, logOut } = use(AuthContext)
   const handleLogOut = () => {
     console.log('log out');
@@ -18,7 +19,7 @@ const Navbar = () => {
               icon: "error",
               title: "Oops...",
               text: "Something went wrong!",
-              });
+            });
           })
       })
   }
@@ -40,7 +41,7 @@ const Navbar = () => {
                 <li className='font-semibold text-lg'><Link to='/mypostedtasks'>My Posted Task</Link></li>
               </ul>
             </div>
-            <Link to='/' className="text-3xl md:text-5xl font-bold">HireSwift</Link>
+            <Link to='/' className="text-3xl text-pink-500 md:text-5xl font-bold">HireSwift</Link>
           </div>
           <div className="navbar-center hidden lg:flex">
             <ul className="menu menu-horizontal px-1">
@@ -51,10 +52,33 @@ const Navbar = () => {
 
             </ul>
           </div>
+
+
           <div className="navbar-end">
+       
+              <div className='mr-5'>
+                     {
+              user && (
+                <div className="relative group">
+                  <img
+                    className="w-10 h-10 rounded-full border-2 border-primary object-cover"
+                    src={user.photoURL}
+                    alt="User Profile"
+                  />
+                  <div className="absolute right-full top-1/2 transform -translate-y-1/2 mr-2
+                        bg-amber-400 text-black text-md whitespace-nowrap rounded px-2 py-2 text-sm font-semibold
+                        opacity-0 group-hover:opacity-100 transition-opacity duration-300 z-10">
+                   {user.displayName}
+                  </div>
+                </div>
+              )
+            }
+              </div>
+
+
             {user ? <Link to='/signup'>
               <button onClick={handleLogOut} className='btn btn-secondary font-semibold text-lg'>Log Out</button>
-            </Link> : <Link to='/signup'>
+            </Link> : <Link to='/login'>
               <button className='btn btn-secondary font-semibold text-lg'>Log In</button>
             </Link>}
 
