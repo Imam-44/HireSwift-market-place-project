@@ -49,7 +49,7 @@ const Hero = () => {
               />
               <div className="absolute inset-0 bg-black/60 flex items-center px-8 md:px-20">
                 <div className="text-white max-w-xl space-y-6 animate-fade-in-left">
-                  <h2 className="text-3xl  md:text-5xl font-bold transition-all duration-1000">
+                  <h2 className="text-3xl text-pink-500 md:text-5xl font-bold transition-all duration-1000">
                     {slide.title}
                   </h2>
                   <p className="text-lg  md:text-xl whitespace-pre-line transition-opacity duration-1000">

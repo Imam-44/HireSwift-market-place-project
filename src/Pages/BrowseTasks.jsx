@@ -1,12 +1,14 @@
 import { useEffect, useState } from "react";
-import { Link, useLoaderData, useParams } from "react-router";
+import { Link } from "react-router";
 
 const BrowseTasks = () => {
-  const taskData = useLoaderData();
-  console.log(taskData);
-  const {id} = useParams();
-  const [tasks, setTasks] = useState([]);
 
+  const [tasks, setTasks] = useState([]);
+  useEffect(() => {
+    fetch('http://localhost:5000/tasks')
+      .then(res => res.json())
+      .then(data => setTasks(data));
+  }, []);
 
 
   return (
@@ -14,7 +16,7 @@ const BrowseTasks = () => {
       <h2 className="text-3xl font-bold text-center text-pink-900 mb-6">Browse Tasks</h2>
 
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-        {taskData.map((task) => (
+        {tasks.map((task) => (
           <div
             key={task._id}
             className="bg-white rounded-xl  p-6 space-y-3 border border-gray-200 shadow-xl hover:shadow-pink-200 transition-shadow duration-100"
