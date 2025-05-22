@@ -1,8 +1,9 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import Swal from 'sweetalert2';
+import { AuthContext } from '../context/authContext';
 
 const AddTask = () => {
-
+ const {user} = useContext(AuthContext)
   const handleAddTask = e => {
     e.preventDefault();
     const form = e.target;
@@ -77,11 +78,11 @@ const AddTask = () => {
           <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
             <div>
               <label className="block mb-1 font-medium">User Name</label>
-              <input type="text" name='userName' defaultValue="John Doe" readOnly className="w-full px-4 py-2 bg-gray-100 border rounded-xl" required  />
+              <input type="text" name='userName'     defaultValue={user?.displayName || ""} readOnly className="w-full px-4 py-2 bg-gray-100 border rounded-xl" required  />
             </div>
             <div>
               <label className="block mb-1 font-medium">User Email</label>
-              <input type="email" name='userEmail' value="john@example.com" readOnly className="w-full px-4 py-2 bg-gray-100 border rounded-xl" required  />
+              <input type="email" name='userEmail' defaultValue={user?.email || ""} readOnly className="w-full px-4 py-2 bg-gray-100 border rounded-xl" required  />
             </div>
           </div>
 

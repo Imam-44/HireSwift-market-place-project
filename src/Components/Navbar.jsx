@@ -76,11 +76,16 @@ const Navbar = () => {
               </div>
 
 
-            {user ? <Link to='/signup'>
+            {user ? <Link to='/login'>
               <button onClick={handleLogOut} className='btn btn-secondary font-semibold text-lg'>Log Out</button>
-            </Link> : <Link to='/login'>
-              <button className='btn btn-secondary font-semibold text-lg'>Log In</button>
-            </Link>}
+            </Link>  : <>
+             <Link to='/login'>
+              <button className='btn btn-secondary hover:bg-pink-700 font-semibold text-lg mr-5'>Log In</button>
+            </Link>
+            <Link to='/login'>
+              <button className='btn bg-pink-200 hover:bg-pink-400 font-semibold text-lg'>sign Up</button>
+            </Link>
+            </>}
 
           </div>
         </div>
