@@ -5,62 +5,44 @@ import { AuthContext } from "../context/authContext";
 import Swal from "sweetalert2";
 
 const SignUp = () => {
-  const { createUser } = use(AuthContext);
+  const { createUser, setUser } = use(AuthContext);
 
   const hanldeSignUp = e => {
     e.preventDefault();
     const form = e.target;
-    const formData = new FormData(form);
+    const name = form.name.value;
+    const email = form.email.value;
+    const password = form.password.value;
+    const photoUrl = form.photoUrl.value;
+    console.log({ name, email, password, photoUrl });
 
-    const { email, password, ...restFormData } = Object.fromEntries(formData.entries());
-
-
-    console.log(email, password);
-
-
-    //create user in the firebase
     createUser(email, password)
-      .then(result => {
-        console.log(result.user);
-
-        const userProfile = {
-          email,
-          ...restFormData,
-          creationTime:result.user?.metadata?.creationTime,
-          lastSignInTime:result.user?.metadata?.lastSignInTime
+      .then((result) => {
+        const user = result.user;
+        console.log(user);
+         if (user) {
+          Swal.fire({
+            icon: "success",
+            title: "your account created successfully",
+            showConfirmButton: false,
+            timer: 1500
+          });
         }
-
-        //save profile info in the db
-        fetch('http://localhost:5000/users', {
-          method: "POST",
-          headers: {
-            'Content-Type': 'application/json'
-          },
-          body: JSON.stringify(userProfile)
-        })
-          .then(res => res.json())
-          .then(data => {
-            if (data.insertedId) {
-              Swal.fire({
-                icon: "success",
-                title: "your account created successfully",
-                showConfirmButton: false,
-                timer: 1500
-              });
-            }
-          })
+        setUser(user);
+       
       })
-      .catch(error => {
+      .catch((error) => {
+
         if (error) {
           Swal.fire({
             icon: "error",
             title: "Oops...",
             text: "Your email already added!",
-            
+
           });
         }
       })
-  }
+    }
 
 
 
@@ -77,6 +59,7 @@ const SignUp = () => {
               name="name"
               placeholder="Your Name"
               className="w-full px-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-indigo-500"
+              required
             />
           </div>
 
@@ -87,6 +70,7 @@ const SignUp = () => {
               name="email"
               placeholder="you@example.com"
               className="w-full px-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-indigo-500"
+              required
             />
           </div>
 
@@ -97,6 +81,7 @@ const SignUp = () => {
               name='photoUrl'
               placeholder="https://photo-link.com"
               className="w-full px-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-indigo-500"
+              required
             />
           </div>
 
@@ -107,6 +92,7 @@ const SignUp = () => {
               name='password'
               placeholder="Create a strong password"
               className="w-full px-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-indigo-500"
+              required
             />
           </div>
 

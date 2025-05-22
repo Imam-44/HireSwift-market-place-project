@@ -2,10 +2,11 @@ import { use } from "react";
 import { FcGoogle } from "react-icons/fc";
 import { Link } from "react-router";
 import { AuthContext } from "../context/authContext";
+import Swal from "sweetalert2";
 
 const Login = () => {
 
-  const {logInUser} = use(AuthContext)
+  const { logInUser } = use(AuthContext)
 
   const handleLogIn = e => {
     e.preventDefault();
@@ -16,12 +17,28 @@ const Login = () => {
 
     //firebase log in send
     logInUser(email, password)
-    .then(result => {
-      console.log(result.user);
-    })
-    .catch(error => {
-      console.log(error);
-    })
+      .then(result => {
+        const user = result.user;
+        if (user) {
+          Swal.fire({
+            icon: "success",
+            title: "your account created successfully",
+            showConfirmButton: false,
+            timer: 1500
+          })
+        }
+      })
+
+      .catch(error => {
+        if (error) {
+          Swal.fire({
+            icon: "error",
+            title: "Oops...",
+            text: "Your email/password are wrong!",
+
+          });
+        }
+        })
 
   }
 
@@ -38,6 +55,7 @@ const Login = () => {
               name="email"
               className="w-full px-4 py-2 border rounded-lg focus:outline-none focus:ring focus:ring-indigo-400"
               placeholder="you@example.com"
+              required
             />
           </div>
 
@@ -48,6 +66,7 @@ const Login = () => {
               name="password"
               className="w-full px-4 py-2 border rounded-lg focus:outline-none focus:ring focus:ring-indigo-400"
               placeholder="Enter your password"
+              required
             />
           </div>
 
