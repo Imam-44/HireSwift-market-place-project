@@ -1,66 +1,79 @@
-import { createBrowserRouter } from "react-router";
+import { createBrowserRouter } from "react-router-dom";
 import HomeLayouts from "../Layouts/HomeLayouts";
 import Home from "../Pages/Home";
 import AddTask from "../Pages/AddTask";
 import Login from "../Pages/Login";
 import SignUp from "../Pages/SignUp";
 import BrowseTasks from "../Pages/BrowseTasks";
-import TaskCard from "../Components/FeaturedTask";
 import TaskDetails from "../Pages/TaskDetails";
 import MyPostedTasks from "../Pages/MyPostedTasks";
 import UpdateTask from "../Pages/UpdateTask";
-import { Component } from "react";
 import Error from "../Pages/error";
-
+import PrivateRoute from "../context/PrivetRoute";
 
 
 let router = createBrowserRouter([
   {
     path: '/',
-    Component: HomeLayouts,
+    element: <HomeLayouts />,
     children: [
       {
         index: true,
         loader: () => fetch('http://localhost:5000/tasks'),
-        Component: Home
+        element: <Home />
       },
       {
         path: '/add-task',
-        Component: AddTask
+        element: (
+          <PrivateRoute>
+            <AddTask />
+          </PrivateRoute>
+        )
       },
       {
         path: '/login',
-        Component: Login
+        element: <Login />
       },
       {
         path: '/signup',
-        Component: SignUp
+        element: <SignUp />
       },
       {
         path: '/browsetask',
-        Component: BrowseTasks
+        element: <BrowseTasks />
       },
       {
         path: '/taskdetails/:id',
         loader: ({ params }) => fetch(`http://localhost:5000/tasks/${params.id}`),
-        Component: TaskDetails
+        element: <PrivateRoute>
+          <TaskDetails />
+        </PrivateRoute>
       },
       {
         path: '/mypostedtasks',
-        Component: MyPostedTasks
+        element: (
+          <PrivateRoute>
+            <MyPostedTasks />
+          </PrivateRoute>
+        )
       },
       {
         path: '/update-task/:id',
-        Component: UpdateTask,
-        loader: ({ params }) => fetch(`http://localhost:5000/tasks/${params.id}`)
+        loader: ({ params }) => fetch(`http://localhost:5000/tasks/${params.id}`),
+        element: (
+          <PrivateRoute>
+            <UpdateTask />
+          </PrivateRoute>
+        )
       },
-      {
-        path:'*',
-        Component: Error
-      }
-    ]
-  }
-]);
 
+    ]
+  } ,
+  
+  {
+        path: '*',
+        element: <Error />
+     }
+]);
 
 export default router;

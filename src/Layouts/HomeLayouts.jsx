@@ -5,7 +5,7 @@ import Footer from '../Components/Footer';
 
 const HomeLayouts = () => {
   return (
-     <>
+     <div>
       <header>
         <Navbar/>
       </header>
@@ -18,7 +18,7 @@ const HomeLayouts = () => {
        <Footer/>
      </footer>
 
-     </>
+     </div>
   );
 };
 

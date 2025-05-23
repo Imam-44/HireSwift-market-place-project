@@ -20,7 +20,7 @@ const FeaturedSection = () => {
         <p className="text-center text-gray-600 mb-10 max-w-xl mx-auto">
           Discover the best tasks handpicked for you, showcasing essential details with clean design and smooth user interaction.
         </p>
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
           {featuredTasks.map(task => (
             <FeaturedTask key={task._id} task={task} />
           ))}

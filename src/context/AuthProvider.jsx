@@ -1,45 +1,62 @@
 import React, { useEffect, useState } from 'react';
 import { AuthContext } from './authContext';
-import { getAuth, createUserWithEmailAndPassword, signInWithEmailAndPassword, onAuthStateChanged, signOut } from "firebase/auth";
-import {auth} from '../firebase/firebase.init'
+import {
+  getAuth,
+  createUserWithEmailAndPassword,
+  signInWithEmailAndPassword,
+  onAuthStateChanged,
+  signOut,
+  GoogleAuthProvider,
+   signInWithPopup
+} from 'firebase/auth';
+
+import { auth } from '../firebase/firebase.init';
 
 const AuthProvider = ({ children }) => {
-
   const [user, setUser] = useState(null);
- 
-  // console.log(user);
+
   const createUser = (email, password) => {
-    return createUserWithEmailAndPassword(auth, email, password)
-  }
+    return createUserWithEmailAndPassword(auth, email, password);
+  };
 
   const logInUser = (email, password) => {
-    return signInWithEmailAndPassword(auth, email, password)
-  }
+    return signInWithEmailAndPassword(auth, email, password);
+  };
 
   const logOut = () => {
     return signOut(auth);
-  }
+  };
+
+const googleProvider = new GoogleAuthProvider();
+
+const googleLogin = () => {
+  return signInWithPopup(auth, googleProvider);
+};
 
   useEffect(() => {
-  const unsubscribe =  onAuthStateChanged(auth, (currentUser)=> {
+    const unsubscribe = onAuthStateChanged(auth, (currentUser) => {
       setUser(currentUser);
     });
-    return()=> {
+    return () => {
       unsubscribe();
-    }
-  })
+    };
+  }, []);
 
-   const contextValue = {
+
+
+  const contextValue = {
     createUser,
     logInUser,
     user,
     setUser,
     logOut,
-  }
+    googleLogin,
+  };
+
   return (
-   <AuthContext value={contextValue}>
-     { children }
-   </AuthContext>
+    <AuthContext.Provider value={contextValue}>
+      {children}
+    </AuthContext.Provider>
   );
 };
 

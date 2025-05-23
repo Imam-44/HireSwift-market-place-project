@@ -9,12 +9,12 @@ import TopFreelancers from '../Components/TopFreelancers';
 const Home = () => {
  
   return (
-     <>
+     <div className=''>
        <Hero/>
        <HowItWorks/>
       <FeaturedSection/>
       <TopFreelancers/>
-     </>
+     </div>
   );
 };
 

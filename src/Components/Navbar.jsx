@@ -30,7 +30,7 @@ const Navbar = () => {
       : "font-semibold text-lg";
 
   return (
-    <div className="shadow-sm bg-base-100">
+    <div className="shadow-sm bg-pink-100">
       <div className='navbar max-w-11/12 mx-auto'>
         {/* Left */}
         <div className="navbar-start">

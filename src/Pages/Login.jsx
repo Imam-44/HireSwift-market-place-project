@@ -3,10 +3,11 @@ import { FcGoogle } from "react-icons/fc";
 import { Link, useNavigate } from "react-router";
 import { AuthContext } from "../context/authContext";
 import Swal from "sweetalert2";
+import { MdCheckCircle, MdError } from "react-icons/md";
 
 const Login = () => {
   const navigate = useNavigate();
-  const { logInUser } = use(AuthContext)
+  const { logInUser, googleLogin } = use(AuthContext)
 
   const handleLogIn = e => {
     e.preventDefault();
@@ -39,12 +40,35 @@ const Login = () => {
 
           });
         }
-        })
+      })
 
   }
 
+    const handleGoogleLogin = () => {
+      googleLogin()
+        .then(result => {
+          const loggedUser = result.user;
+          toast.custom(() => (
+            <div className="flex items-center gap-2 text-green-600 font-medium bg-green-100 px-4 py-2 rounded-lg shadow">
+              <MdCheckCircle className="text-xl" />
+              Google Login Successful!
+            </div>
+          ));
+          navigate("/");
+        })
+        .catch(error => {
+          toast.custom(() => (
+            <div className="flex items-center gap-2 text-red-600 font-medium bg-red-100 px-4 py-2 rounded-lg shadow">
+              <MdError className="text-xl" />
+              Google Login Failed.
+            </div>
+          ));
+          console.error(error);
+        });
+    };
+
   return (
-    <div className="min-h-screen bg-gradient-to-br from-[#0f0c29] via-[#302b63] to-[#24243e] flex items-center justify-center p-4">
+    <div className="min-h-screen bg-gradient-to-br from-[#a229a6] via-[#9a248a] to-[#c9356b] flex items-center justify-center p-4">
       <div className="bg-white rounded-2xl shadow-2xl w-full max-w-md p-8 space-y-6">
         <h2 className="text-3xl font-bold text-center text-pink-500">Login to Your Account</h2>
 
@@ -73,7 +97,7 @@ const Login = () => {
 
           <button
             type="submit"
-            className="w-full bg-pink-500 text-white py-2 rounded-lg hover:bg-pink-700 transition"
+            className="w-full bg-pink-500 text-white py-2 rounded-lg hover:bg-pink-700 transition cursor-pointer"
           >
             Login
           </button>
@@ -83,11 +107,12 @@ const Login = () => {
           <span className="text-gray-500">Or login with</span>
         </div>
 
-        <button
-          className="w-full flex items-center justify-center gap-2 border py-2 rounded-lg hover:bg-gray-100 transition"
+        <button 
+          onClick={handleGoogleLogin}
+          className="w-full flex items-center justify-center gap-2 border py-2 rounded-lg hover:bg-gray-100 transition cursor-pointer"
         >
           <FcGoogle className="text-2xl" />
-          <span className="text-gray-700 font-medium">Continue with Google</span>
+          <span className="text-pink-700 font-medium">Continue with Google</span>
         </button>
 
         <p className="text-center text-sm text-gray-600">
