@@ -29,7 +29,7 @@ const freelancers = [
 ];
 
 const TopFreelancers = () => (
-  <section className="py-16 bg-white">
+  <section className="py-16 mb-15 bg-white">
     <div className="flex justify-center items-center gap-3 mb-2">
       <FaMedal size={32} className="text-pink-600" />
       <h2 className="text-4xl font-bold text-black">Top Freelancers</h2>
