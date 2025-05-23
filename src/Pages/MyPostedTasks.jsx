@@ -1,11 +1,12 @@
 import { useContext, useEffect, useState } from "react";
 import Swal from "sweetalert2";
 import { AuthContext } from "../context/authContext";
+import { useNavigate } from "react-router";
 
 const MyPostedTasks = () => {
   const { user } = useContext(AuthContext);
   const [tasks, setTasks] = useState([]);
-
+ const navigate = useNavigate();
   useEffect(() => {
     if (!user?.email) return;
 
@@ -63,9 +64,15 @@ const MyPostedTasks = () => {
                     <td className="px-3 py-4 text-gray-600">${task.budget}</td>
                     <td className="px-3 py-4 text-center">
                       <div className="flex flex-col sm:flex-row justify-center items-center gap-2">
-                        <button className="bg-indigo-600 hover:bg-indigo-700 text-white px-3 py-1 rounded text-xs font-semibold transition w-full sm:w-auto">Update</button>
-                        <button onClick={() => handleDelete(task._id)} className="bg-rose-600 hover:bg-rose-700 text-white px-3 py-1 rounded text-xs font-semibold transition w-full sm:w-auto">Delete</button>
-                        <button className="bg-emerald-600 hover:bg-emerald-700 text-white px-3 py-1 rounded text-xs font-semibold transition w-full sm:w-auto">Bids</button>
+                        <button
+                          onClick={() => navigate(`/update-task/${task._id}`)}
+                          className="bg-indigo-600 hover:bg-indigo-700 text-white px-3 py-1 rounded text-xs font-semibold transition cursor-pointer"
+                        >
+                          Update
+                        </button>
+
+                        <button onClick={() => handleDelete(task._id)} className="bg-rose-600 hover:bg-rose-700 text-white px-3 py-1 rounded text-xs font-semibold transition w-full sm:w-auto cursor-pointer">Delete</button>
+                        <button className="bg-emerald-600 hover:bg-emerald-700 text-white px-3 py-1 rounded text-xs font-semibold transition w-full sm:w-auto cursor-pointer">Bids</button>
                       </div>
                     </td>
                   </tr>

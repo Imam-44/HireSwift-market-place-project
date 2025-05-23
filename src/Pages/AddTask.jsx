@@ -8,8 +8,11 @@ const AddTask = () => {
     e.preventDefault();
     const form = e.target;
     const formData = new FormData(form);
-    const newTaskData = Object.fromEntries(formData.entries())
-    console.log(newTaskData);
+    const newTaskData = {
+      ...Object.fromEntries(formData.entries()),
+      deadline:formData.get('deadline')
+    }
+
 
     //send task data to the db
     fetch('http://localhost:5000/tasks', {

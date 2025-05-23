@@ -8,6 +8,8 @@ import BrowseTasks from "../Pages/BrowseTasks";
 import TaskCard from "../Components/FeaturedTask";
 import TaskDetails from "../Pages/TaskDetails";
 import MyPostedTasks from "../Pages/MyPostedTasks";
+import UpdateTask from "../Pages/UpdateTask";
+import { Component } from "react";
 
 
 
@@ -45,9 +47,15 @@ let router = createBrowserRouter([
       {
         path: '/mypostedtasks',
         Component: MyPostedTasks
+      },
+      {
+        path: '/update-task/:id',
+        Component: UpdateTask,
+        loader: ({ params }) => fetch(`http://localhost:5000/tasks/${params.id}`)
       }
     ]
   }
-])
+]);
+
 
 export default router;
