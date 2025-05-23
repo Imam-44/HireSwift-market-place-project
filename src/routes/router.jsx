@@ -10,6 +10,7 @@ import MyPostedTasks from "../Pages/MyPostedTasks";
 import UpdateTask from "../Pages/UpdateTask";
 import Error from "../Pages/error";
 import PrivateRoute from "../context/PrivetRoute";
+import Loading from "../Components/Loading";
 
 
 let router = createBrowserRouter([
@@ -20,6 +21,7 @@ let router = createBrowserRouter([
       {
         index: true,
         loader: () => fetch('http://localhost:5000/tasks'),
+        hydrateFallbackElement: <Loading/>,
         element: <Home />
       },
       {
@@ -45,6 +47,7 @@ let router = createBrowserRouter([
       {
         path: '/taskdetails/:id',
         loader: ({ params }) => fetch(`http://localhost:5000/tasks/${params.id}`),
+        hydrateFallbackElement: <Loading/>,
         element: <PrivateRoute>
           <TaskDetails />
         </PrivateRoute>
@@ -60,6 +63,7 @@ let router = createBrowserRouter([
       {
         path: '/update-task/:id',
         loader: ({ params }) => fetch(`http://localhost:5000/tasks/${params.id}`),
+        hydrateFallbackElement: <Loading/>,
         element: (
           <PrivateRoute>
             <UpdateTask />

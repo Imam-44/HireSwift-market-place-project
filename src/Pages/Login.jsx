@@ -1,9 +1,10 @@
 import { use } from "react";
 import { FcGoogle } from "react-icons/fc";
-import { Link, useNavigate } from "react-router";
+import { Link, useNavigate } from "react-router-dom";
 import { AuthContext } from "../context/authContext";
 import Swal from "sweetalert2";
 import { MdCheckCircle, MdError } from "react-icons/md";
+import toast from "react-hot-toast";
 
 const Login = () => {
   const navigate = useNavigate();
@@ -23,7 +24,7 @@ const Login = () => {
         if (user) {
           Swal.fire({
             icon: "success",
-            title: "your account created successfully",
+            title: "your account log in successfully",
             showConfirmButton: false,
             timer: 1500
           })
@@ -45,27 +46,17 @@ const Login = () => {
   }
 
     const handleGoogleLogin = () => {
-      googleLogin()
-        .then(result => {
-          const loggedUser = result.user;
-          toast.custom(() => (
-            <div className="flex items-center gap-2 text-green-600 font-medium bg-green-100 px-4 py-2 rounded-lg shadow">
-              <MdCheckCircle className="text-xl" />
-              Google Login Successful!
-            </div>
-          ));
-          navigate("/");
-        })
-        .catch(error => {
-          toast.custom(() => (
-            <div className="flex items-center gap-2 text-red-600 font-medium bg-red-100 px-4 py-2 rounded-lg shadow">
-              <MdError className="text-xl" />
-              Google Login Failed.
-            </div>
-          ));
-          console.error(error);
-        });
-    };
+    const loadingToast = toast.loading('Signing in with Google...');
+    googleLogin()
+      .then(result => {
+        const loggedUser = result.user;
+        toast.success('Logged in successfully!', { id: loadingToast });
+        navigate('/');
+      })
+      .catch(error => {
+        toast.error(error.message, { id: loadingToast });
+      });
+  };
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-[#a229a6] via-[#9a248a] to-[#c9356b] flex items-center justify-center p-4">

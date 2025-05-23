@@ -15,7 +15,7 @@ const BrowseTasks = () => {
   return (
    <div className="bg-pink-100">
         <div className="min-h-screen w-11/12 mx-auto py-10 px-4">
-      <h2 className="text-3xl font-bold text-center text-pink-900 mb-6">Browse Tasks</h2>
+      <h2 className="text-3xl font-bold text-center text-pink-900 mb-6">Browse All Tasks Here</h2>
 
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
         {tasks.map((task) => (
