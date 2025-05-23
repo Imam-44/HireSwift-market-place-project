@@ -39,7 +39,7 @@ const AddTask = () => {
   }
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-[#0f0c29] via-[#302b63] to-[#24243e] flex items-center justify-center p-4">
+    <div className="min-h-screen bg-gradient-to-br from-[#773481] via-[#9c156b] to-[#966484] flex items-center justify-center p-4">
       <div className="bg-white rounded-2xl shadow-2xl w-full max-w-xl p-8 space-y-6">
         <h2 className="text-3xl font-bold text-center text-[#d52a91]">Add New Task</h2>
 

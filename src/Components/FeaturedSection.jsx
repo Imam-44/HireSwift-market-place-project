@@ -1,5 +1,5 @@
-
 import React, { useEffect, useState } from 'react';
+import { FaStar } from 'react-icons/fa';  // React icon import
 import FeaturedTask from './FeaturedTask';
 
 const FeaturedSection = () => {
@@ -13,8 +13,13 @@ const FeaturedSection = () => {
 
   return (
     <section className="py-16 bg-gray-100">
-      <div className="max-w-11/12 mx-auto px-4">
-        <h2 className="text-4xl font-bold text-center text-pink-600 mb-10">Featured Tasks</h2>
+      <div className="max-w-10/12 mx-auto px-4">
+        <h2 className="flex items-center justify-center text-4xl font-bold text-center mb-4">
+          <FaStar className="text-pink-500 mr-3" /> Top Featured Tasks
+        </h2>
+        <p className="text-center text-gray-600 mb-10 max-w-xl mx-auto">
+          Discover the best tasks handpicked for you, showcasing essential details with clean design and smooth user interaction.
+        </p>
         <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
           {featuredTasks.map(task => (
             <FeaturedTask key={task._id} task={task} />

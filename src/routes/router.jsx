@@ -10,6 +10,7 @@ import TaskDetails from "../Pages/TaskDetails";
 import MyPostedTasks from "../Pages/MyPostedTasks";
 import UpdateTask from "../Pages/UpdateTask";
 import { Component } from "react";
+import Error from "../Pages/error";
 
 
 
@@ -52,6 +53,10 @@ let router = createBrowserRouter([
         path: '/update-task/:id',
         Component: UpdateTask,
         loader: ({ params }) => fetch(`http://localhost:5000/tasks/${params.id}`)
+      },
+      {
+        path:'*',
+        Component: Error
       }
     ]
   }

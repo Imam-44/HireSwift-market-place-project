@@ -56,10 +56,10 @@ const Hero = () => {
                     {slide.description}
                   </p>
                   <div className="flex gap-4">
-                    <button className="bg-pink-500 text-white px-6 py-2 rounded-full hover:bg-pink-400 transition duration-300">
+                    <button className="bg-pink-500 text-white px-10 py-2 rounded-full hover:bg-pink-400 transition duration-300 cursor-pointer">
                       Explore
                     </button>
-                    <button className="bg-transparent border border-white px-6 py-2 rounded-full hover:bg-white hover:text-black transition duration-300">
+                    <button className="bg-transparent border border-white px-10 py-2 rounded-full hover:bg-white hover:text-black transition duration-300 cursor-pointer">
                       Contact
                     </button>
                   </div>
