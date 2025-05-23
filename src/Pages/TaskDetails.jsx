@@ -3,7 +3,7 @@ import { useLoaderData, useParams } from "react-router-dom";
 import DetailsCard from "../Components/DetailsCard";
 
 const TaskDetails = () => {
-  const task = useLoaderData(); 
+  const task = useLoaderData();
   // const taskData = useLoaderData();
   // const {id} = useParams();
   // const [task, setTask] = useState([])
@@ -21,9 +21,11 @@ const TaskDetails = () => {
   // if (!task) return <p className="text-center text-red-500">Task not found</p>;
 
   return (
-   <div>
-     <DetailsCard task={task}/>
-   </div>
+    <div>
+
+
+      <DetailsCard task={task} />
+    </div>
   );
 };
 

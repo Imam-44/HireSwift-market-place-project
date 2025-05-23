@@ -1,8 +1,12 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import { FaCalendarAlt, FaUserTie, FaDollarSign, FaTasks } from "react-icons/fa";
+import Swal from 'sweetalert2';
+import { AuthContext } from '../context/authContext';
 
 const DetailsCard = ({ task }) => {
+  const { user } = useContext(AuthContext);
   const {
+    _id,
     title,
     category,
     deadline,
@@ -11,6 +15,36 @@ const DetailsCard = ({ task }) => {
     userEmail,
     description,
   } = task || {};
+
+  const handleBidSubmit = async (e) => {
+    e.preventDefault();
+    const form = e.target;
+
+    const bid = {
+      taskId: _id,
+      bidderEmail: user.email,
+      bidderName: user.displayName,
+      price: parseInt(form.price.value),
+      message: form.message.value,
+      createdAt: new Date(),
+    };
+
+    try {
+      const res = await fetch('http://localhost:5000/bids', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(bid),
+      });
+
+      const data = await res.json();
+      if (data.insertedId) {
+        Swal.fire('Success!', 'Bid placed successfully', 'success');
+        form.reset();
+      }
+    } catch (err) {
+      Swal.fire('Error', 'Something went wrong!', 'error');
+    }
+  };
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-[#fdfbfb] to-[#ebedee] flex items-center justify-center p-6">
@@ -40,6 +74,39 @@ const DetailsCard = ({ task }) => {
             <p className="text-justify leading-relaxed">{description}</p>
           </div>
         </div>
+
+        {/* Bid Form */}
+        {user ? (
+          <form
+            onSubmit={handleBidSubmit}
+            className="mt-8 p-6 bg-gray-50 rounded-xl border border-gray-200 space-y-4 shadow-md"
+          >
+            <h3 className="text-xl font-semibold text-gray-800 mb-4 border-b pb-2">Place a Bid</h3>
+
+            <input
+              type="number"
+              name="price"
+              placeholder="Your Bid Price"
+              required
+              className="input input-bordered w-full"
+            />
+
+            <textarea
+              name="message"
+              placeholder="Write your message here..."
+              required
+              className="textarea textarea-bordered w-full"
+            ></textarea>
+
+            <button type="submit" className="btn btn-success w-full">
+              Submit Bid
+            </button>
+          </form>
+        ) : (
+          <p className="mt-6 text-red-500 font-medium">
+            You must be logged in to place a bid.
+          </p>
+        )}
       </div>
     </div>
   );
