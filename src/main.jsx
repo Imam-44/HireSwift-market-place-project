@@ -7,12 +7,14 @@ import AuthProvider from './context/AuthProvider'
 import LoadingProvider from './context/LoadingContext'
 
 
+
 createRoot(document.getElementById('root')).render(
   <StrictMode>
-     <AuthProvider>
+    <AuthProvider>
          <LoadingProvider>
             <RouterProvider router={router}/> 
          </LoadingProvider>
      </AuthProvider>
+ 
   </StrictMode>,
 )

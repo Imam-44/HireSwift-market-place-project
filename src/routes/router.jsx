@@ -20,7 +20,7 @@ let router = createBrowserRouter([
     children: [
       {
         index: true,
-        loader: () => fetch('http://localhost:5000/tasks'),
+        loader: () => fetch('https://assignment-10-server-psi-ashen.vercel.app/tasks'),
         hydrateFallbackElement: <Loading/>,
         element: <Home />
       },
@@ -46,7 +46,7 @@ let router = createBrowserRouter([
       },
       {
         path: '/taskdetails/:id',
-        loader: ({ params }) => fetch(`http://localhost:5000/tasks/${params.id}`),
+        loader: ({ params }) => fetch(`https://assignment-10-server-psi-ashen.vercel.app/tasks/${params.id}`),
         hydrateFallbackElement: <Loading/>,
         element: <PrivateRoute>
           <TaskDetails />
@@ -62,7 +62,7 @@ let router = createBrowserRouter([
       },
       {
         path: '/update-task/:id',
-        loader: ({ params }) => fetch(`http://localhost:5000/tasks/${params.id}`),
+        loader: ({ params }) => fetch(`https://assignment-10-server-psi-ashen.vercel.app/tasks/${params.id}`),
         hydrateFallbackElement: <Loading/>,
         element: (
           <PrivateRoute>

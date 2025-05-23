@@ -16,7 +16,7 @@ const HomeLayouts = () => {
   }, [location]);
 
   return (
-    <div>
+    <>
       {loading && <Loading />}
 
       <header>
@@ -30,7 +30,7 @@ const HomeLayouts = () => {
       <footer>
         <Footer />
       </footer>
-    </div>
+    </>
   );
 };
 

@@ -15,7 +15,7 @@ const AddTask = () => {
 
 
     //send task data to the db
-    fetch('http://localhost:5000/tasks', {
+    fetch('https://assignment-10-server-psi-ashen.vercel.app/tasks', {
       method: 'POST',
       headers: {
         'content-type': 'application/json'

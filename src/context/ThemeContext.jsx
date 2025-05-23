@@ -1,20 +1,33 @@
-// // src/context/ThemeContext.jsx
-// import { createContext, useContext, useState, useEffect } from 'react';
+// import { createContext, useEffect, useState } from "react";
 
-// const ThemeContext = createContext();
+// export const ThemeContext = createContext();
 
-// export const ThemeProvider = ({ children }) => {
-//   const [theme, setTheme] = useState(localStorage.getItem('theme') || 'light');
-
-//   const toggleTheme = () => {
-//     const newTheme = theme === 'light' ? 'dark' : 'light';
-//     setTheme(newTheme);
-//     localStorage.setItem('theme', newTheme);
-//   };
+// const ThemeProvider = ({ children }) => {
+//   const [theme, setTheme] = useState("light");
 
 //   useEffect(() => {
-//     document.documentElement.setAttribute('data-theme', theme);
-//   }, [theme]);
+//     const savedTheme = localStorage.getItem("theme") || "light";
+//     setTheme(savedTheme);
+
+//     if (savedTheme === "dark") {
+//       document.documentElement.classList.add("dark");
+//     } else {
+//       document.documentElement.classList.remove("dark");
+//     }
+//   }, []);
+
+//   const toggleTheme = () => {
+//     const newTheme = theme === "light" ? "dark" : "light";
+//     setTheme(newTheme);
+
+//     if (newTheme === "dark") {
+//       document.documentElement.classList.add("dark");
+//     } else {
+//       document.documentElement.classList.remove("dark");
+//     }
+
+//     localStorage.setItem("theme", newTheme);
+//   };
 
 //   return (
 //     <ThemeContext.Provider value={{ theme, toggleTheme }}>
@@ -23,4 +36,4 @@
 //   );
 // };
 
-// export const useTheme = () => useContext(ThemeContext);
+// export default ThemeProvider;

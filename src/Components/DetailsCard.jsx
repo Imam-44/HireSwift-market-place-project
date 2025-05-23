@@ -3,7 +3,7 @@ import { FaCalendarAlt, FaUserTie, FaDollarSign, FaTasks } from "react-icons/fa"
 import Swal from 'sweetalert2';
 import { AuthContext } from '../context/authContext';
 
-const DetailsCard = ({ task }) => {
+const DetailsCard = ({ task, setBidChanged }) => {
   const { user } = useContext(AuthContext);
   const {
     _id,
@@ -15,6 +15,8 @@ const DetailsCard = ({ task }) => {
     userEmail,
     description,
   } = task || {};
+
+  const isOwner = user?.email === userEmail; // ✅ Owner check
 
   const handleBidSubmit = async (e) => {
     e.preventDefault();
@@ -30,16 +32,18 @@ const DetailsCard = ({ task }) => {
     };
 
     try {
-      const res = await fetch('http://localhost:5000/bids', {
+      const res = await fetch('https://assignment-10-server-psi-ashen.vercel.app/bids', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(bid),
       });
 
-      const data = await res.json();
+      const data = await res.json(); // ✅ এইখানে data ঠিকভাবে define
+
       if (data.insertedId) {
         Swal.fire('Success!', 'Bid placed successfully', 'success');
         form.reset();
+        setBidChanged(prev => !prev);
       }
     } catch (err) {
       Swal.fire('Error', 'Something went wrong!', 'error');
@@ -75,33 +79,39 @@ const DetailsCard = ({ task }) => {
           </div>
         </div>
 
-        {/* Bid Form */}
+        {/* Bid Form Section */}
         {user ? (
-          <form
-            onSubmit={handleBidSubmit}
-            className="mt-8 p-6 bg-gray-50 rounded-xl border border-gray-200 space-y-4 shadow-md"
-          >
-            <h3 className="text-xl font-semibold text-gray-800 mb-4 border-b pb-2">Place a Bid</h3>
+          isOwner ? (
+            <p className="mt-6 text-yellow-500 font-medium">
+              You cannot bid on your own task.
+            </p>
+          ) : (
+            <form
+              onSubmit={handleBidSubmit}
+              className="mt-8 p-6 bg-gray-50 rounded-xl border border-gray-200 space-y-4 shadow-md"
+            >
+              <h3 className="text-xl font-semibold text-gray-800 mb-4 border-b pb-2">Place a Bid</h3>
 
-            <input
-              type="number"
-              name="price"
-              placeholder="Your Bid Price"
-              required
-              className="input input-bordered w-full"
-            />
+              <input
+                type="number"
+                name="price"
+                placeholder="Your Bid Price"
+                required
+                className="input input-bordered w-full"
+              />
 
-            <textarea
-              name="message"
-              placeholder="Write your message here..."
-              required
-              className="textarea textarea-bordered w-full"
-            ></textarea>
+              <textarea
+                name="message"
+                placeholder="Write your message here..."
+                required
+                className="textarea textarea-bordered w-full"
+              ></textarea>
 
-            <button type="submit" className="btn btn-success w-full">
-              Submit Bid
-            </button>
-          </form>
+              <button type="submit" className="btn btn-success w-full">
+                Submit Bid
+              </button>
+            </form>
+          )
         ) : (
           <p className="mt-6 text-red-500 font-medium">
             You must be logged in to place a bid.

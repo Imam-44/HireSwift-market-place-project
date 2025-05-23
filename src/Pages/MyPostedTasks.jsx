@@ -14,7 +14,7 @@ const MyPostedTasks = () => {
   useEffect(() => {
     if (!user?.email) return;
 
-    fetch(`http://localhost:5000/my-tasks?email=${user.email}`)
+    fetch(`https://assignment-10-server-psi-ashen.vercel.app/my-tasks?email=${user.email}`)
       .then((res) => res.json())
       .then((data) => setTasks(data));
   }, [user]);
@@ -30,7 +30,7 @@ const MyPostedTasks = () => {
       confirmButtonText: "Yes, delete it!",
     }).then((result) => {
       if (result.isConfirmed) {
-        fetch(`http://localhost:5000/tasks/${id}`, {
+        fetch(`https://assignment-10-server-psi-ashen.vercel.app/tasks/${id}`, {
           method: "DELETE",
         })
           .then((res) => res.json())
@@ -45,7 +45,7 @@ const MyPostedTasks = () => {
   };
 
   const handleViewBids = (taskId) => {
-    fetch(`http://localhost:5000/bids/${taskId}`)
+    fetch(`https://assignment-10-server-psi-ashen.vercel.app/bids/${taskId}`)
       .then((res) => res.json())
       .then((data) => {
         setBids(data);

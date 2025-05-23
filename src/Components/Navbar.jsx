@@ -3,9 +3,10 @@ import { NavLink, useNavigate } from 'react-router-dom';
 import Swal from 'sweetalert2';
 import { AuthContext } from '../context/authContext';
 
+
 const Navbar = () => {
   const { user, logOut } = useContext(AuthContext);
-
+   
   const handleLogOut = () => {
     logOut()
       .then(() => {
@@ -78,6 +79,8 @@ const Navbar = () => {
               </div>
             )}
           </div>
+
+     
 
           {user ? (
             <button onClick={handleLogOut} className='btn btn-secondary font-semibold text-lg'>

@@ -6,7 +6,7 @@ const FeaturedSection = () => {
   const [featuredTasks, setFeaturedTasks] = useState([]);
 
   useEffect(() => {
-    fetch('http://localhost:5000/tasks/home')
+    fetch('https://assignment-10-server-psi-ashen.vercel.app/tasks/home')
       .then(res => res.json())
       .then(data => setFeaturedTasks(data));
   }, []);

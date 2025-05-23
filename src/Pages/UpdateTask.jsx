@@ -26,7 +26,7 @@ const UpdateTask = () => {
       budget
     };
 
-    fetch(`http://localhost:5000/tasks/${task._id}`, {
+    fetch(`https://assignment-10-server-psi-ashen.vercel.app/tasks/${task._id}`, {
       method: "PUT",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify(updatedTask)
