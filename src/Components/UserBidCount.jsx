@@ -11,7 +11,7 @@ const UserBidCount = ({ email, bidChanged }) => {
     setLoading(true);
     setError(null);
 
-    fetch(`https://assignment-10-server-psi-ashen.vercel.app/user-bids-count?email=${email}`)
+    fetch(`https://assignment-10-server-one-sigma.vercel.app/user-bids-count?email=${email}`)
       .then((res) => {
         if (!res.ok) {
           throw new Error("Network response was not ok");

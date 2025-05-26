@@ -92,7 +92,7 @@ const hanldeSignUp = e => {
               type="text"
               name="name"
               placeholder="Your Name"
-              className="w-full px-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-indigo-500"
+              className="w-full px-4 py-2 border rounded-lg text-black focus:outline-none focus:ring-2 focus:ring-indigo-500"
               required
             />
           </div>
@@ -103,7 +103,7 @@ const hanldeSignUp = e => {
               type="email"
               name="email"
               placeholder="you@example.com"
-              className="w-full px-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-indigo-500"
+              className="w-full px-4 py-2 border rounded-lg text-black focus:outline-none focus:ring-2 focus:ring-indigo-500"
               required
             />
           </div>
@@ -114,7 +114,7 @@ const hanldeSignUp = e => {
               type="text"
               name='photoUrl'
               placeholder="https://photo-link.com"
-              className="w-full px-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-indigo-500"
+              className="w-full px-4 py-2 border rounded-lg text-black focus:outline-none focus:ring-2 focus:ring-indigo-500"
               required
             />
           </div>
@@ -125,7 +125,7 @@ const hanldeSignUp = e => {
               type="password"
               name='password'
               placeholder="Create a strong password"
-              className="w-full px-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-indigo-500"
+              className="w-full px-4 py-2 border rounded-lg text-black focus:outline-none focus:ring-2 focus:ring-indigo-500"
               required
             />
           </div>
@@ -140,9 +140,9 @@ const hanldeSignUp = e => {
 
         <div className="text-center text-gray-500">or</div>
 
-        <button onClick={handleGoogleLogin} className="w-full flex items-center justify-center gap-2 border py-2 rounded-lg hover:bg-gray-100 transition">
+        <button onClick={handleGoogleLogin} className="w-full flex items-center text-black justify-center gap-2 border py-2 rounded-lg hover:bg-gray-100 transition">
           <FcGoogle className="text-2xl" />
-          <span className="text-pink-700 font-medium cursor-pointer">Continue with Google</span>
+          <span className="text-pink-700 font-medium cursor-pointer  ">Continue with Google</span>
         </button>
 
         <p className="text-center text-sm text-gray-600">

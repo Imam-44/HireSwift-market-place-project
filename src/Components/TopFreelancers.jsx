@@ -29,12 +29,12 @@ const freelancers = [
 ];
 
 const TopFreelancers = () => (
-  <section className="py-16 mb-15 bg-white">
+  <section className="py-16 mb-15 ">
     <div className="flex justify-center items-center gap-3 mb-2">
       <FaMedal size={32} className="text-pink-600" />
-      <h2 className="text-4xl font-bold text-black">Top Freelancers</h2>
+      <h2 className="text-4xl font-bold ">Top Freelancers</h2>
     </div>
-    <p className="text-center text-gray-600 mb-12">
+    <p className="text-center  mb-12">
       Meet our top-rated freelancers, trusted by hundreds of clients.
     </p>
 

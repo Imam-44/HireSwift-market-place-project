@@ -6,13 +6,13 @@ const FeaturedSection = () => {
   const [featuredTasks, setFeaturedTasks] = useState([]);
 
   useEffect(() => {
-    fetch('https://assignment-10-server-psi-ashen.vercel.app/tasks/home')
+    fetch('https://assignment-10-server-one-sigma.vercel.app/tasks/home')
       .then(res => res.json())
       .then(data => setFeaturedTasks(data));
   }, []);
 
   return (
-    <section className="py-16 bg-gray-100">
+    <section className="py-16 ">
       <div className="max-w-10/12 mx-auto px-4">
         <h2 className="flex items-center justify-center text-4xl font-bold text-center mb-4">
           <FaStar className="text-pink-500 mr-3" /> Top Featured Tasks

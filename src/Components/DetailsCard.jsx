@@ -32,7 +32,7 @@ const DetailsCard = ({ task, setBidChanged }) => {
     };
 
     try {
-      const res = await fetch('https://assignment-10-server-psi-ashen.vercel.app/bids', {
+      const res = await fetch('https://assignment-10-server-one-sigma.vercel.app/bids', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(bid),

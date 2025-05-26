@@ -15,7 +15,7 @@ const AddTask = () => {
 
 
     //send task data to the db
-    fetch('https://assignment-10-server-psi-ashen.vercel.app/tasks', {
+    fetch('https://assignment-10-server-one-sigma.vercel.app/tasks', {
       method: 'POST',
       headers: {
         'content-type': 'application/json'
@@ -40,7 +40,7 @@ const AddTask = () => {
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-[#773481] via-[#9c156b] to-[#966484] flex items-center justify-center p-4">
-      <div className="bg-white rounded-2xl shadow-2xl w-full max-w-xl p-8 space-y-6">
+      <div className="bg-white text-black rounded-2xl shadow-2xl w-full max-w-xl p-8 space-y-6">
         <h2 className="text-3xl font-bold text-center text-[#d52a91]">Add New Task</h2>
 
         <form onSubmit={handleAddTask} className="space-y-4">
@@ -70,7 +70,8 @@ const AddTask = () => {
           {/* Deadline */}
           <div>
             <label className="block mb-1 font-medium">Deadline</label>
-            <input type="date" name='deadline' className="w-full px-4 py-2 border rounded-xl focus:outline-none focus:ring-2 focus:ring-[#302b63]" required  />
+            <input type="date" name='deadline' className="w-full px-4 py-2 border rounded-xl focus:outline-none  
+            focus:ring-2 focus:ring-[#302b63]" required  />
           </div>
 
           {/* Budget */}

@@ -25,12 +25,12 @@ const steps = [
 ];
 
 const HowItWorks = () => (
-  <section className="py-16 bg-white">
+  <section className="py-16">
     <div className="flex justify-center items-center gap-3 mb-2">
       <FaRocket size={32} className="text-pink-600" />
-      <h2 className="text-4xl font-bold text-black">How It Works</h2>
+      <h2 className="text-4xl font-bold ">How It Works</h2>
     </div>
-    <p className="text-center text-gray-600 mb-12">A simple four-step process to get your job done easily.</p>
+    <p className="text-center  mb-12">A simple four-step process to get your job done easily.</p>
     
     <div className="grid md:grid-cols-4 sm:grid-cols-2 gap-8 px-6 max-w-7xl mx-auto">
       {steps.map((step, i) => (

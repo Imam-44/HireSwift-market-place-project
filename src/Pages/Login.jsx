@@ -65,22 +65,22 @@ const Login = () => {
 
         <form onSubmit={handleLogIn} className="space-y-4">
           <div>
-            <label className="block mb-1 font-medium">Email</label>
+            <label className="block mb-1 font-medium text-black">Email</label>
             <input
               type="email"
               name="email"
-              className="w-full px-4 py-2 border rounded-lg focus:outline-none focus:ring focus:ring-indigo-400"
+              className="w-full text-black  px-4 py-2 border rounded-lg focus:outline-none focus:ring focus:ring-indigo-400"
               placeholder="you@example.com"
               required
             />
           </div>
 
           <div>
-            <label className="block mb-1 font-medium">Password</label>
+            <label className="block mb-1 font-medium text-black">Password</label>
             <input
               type="password"
               name="password"
-              className="w-full px-4 py-2 border rounded-lg focus:outline-none focus:ring focus:ring-indigo-400"
+              className="w-full px-4 py-2 border rounded-lg text-black focus:outline-none focus:ring focus:ring-indigo-400"
               placeholder="Enter your password"
               required
             />
@@ -100,7 +100,7 @@ const Login = () => {
 
         <button 
           onClick={handleGoogleLogin}
-          className="w-full flex items-center justify-center gap-2 border py-2 rounded-lg hover:bg-gray-100 transition cursor-pointer"
+          className="w-full flex items-center justify-center gap-2 border py-2 rounded-lg hover:bg-gray-100 transition cursor-pointer text-black"
         >
           <FcGoogle className="text-2xl" />
           <span className="text-pink-700 font-medium">Continue with Google</span>
