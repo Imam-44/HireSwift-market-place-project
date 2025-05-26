@@ -25,7 +25,7 @@ const AddTask = () => {
       .then(res => res.json())
       .then(data => {
         if (data.insertedId) {
-          console.log('added successfully');
+          // console.log('added successfully');
           Swal.fire({
             
             icon: "success",

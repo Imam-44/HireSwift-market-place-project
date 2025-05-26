@@ -5,7 +5,7 @@ import Swal from "sweetalert2";
 
 const UpdateTask = () => {
   const task = useLoaderData();
-  console.log(task);
+  // console.log(task);
   const { user } = useContext(AuthContext);
   const navigate = useNavigate();
 
