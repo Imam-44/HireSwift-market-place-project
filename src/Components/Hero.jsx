@@ -5,6 +5,7 @@ import 'swiper/css/pagination';
 import 'swiper/css/navigation';
 import './Hero.css'
 import { Autoplay, Pagination, Navigation } from 'swiper/modules';
+import { Typewriter } from 'react-simple-typewriter';
 
 const slides = [
   {
@@ -35,7 +36,7 @@ const Hero = () => {
         modules={[Navigation, Pagination, Autoplay]}
         navigation
         pagination={{ clickable: true }}
-        autoplay={{ delay: 5000 }} 
+        autoplay={{ delay: 5000 }}
         loop={true}
         className="w-full h-[600px]"
       >
@@ -50,7 +51,18 @@ const Hero = () => {
               <div className="absolute inset-0 bg-black/60 flex items-center px-8 md:px-20">
                 <div className="text-white max-w-xl space-y-6 animate-fade-in-left">
                   <h2 className="text-3xl text-pink-500 md:text-5xl font-bold transition-all duration-1000">
-                    {slide.title}
+                    
+                    <span className="text-pink-600">
+                      <Typewriter
+                        words={[slide.title,slide.title, slide.title]}
+                        loop={true}
+                        cursor
+                        cursorStyle="|"
+                        typeSpeed={70}
+                        deleteSpeed={50}
+                        delaySpeed={1000}
+                      />
+                    </span>
                   </h2>
                   <p className="text-lg  md:text-xl whitespace-pre-line transition-opacity duration-1000">
                     {slide.description}

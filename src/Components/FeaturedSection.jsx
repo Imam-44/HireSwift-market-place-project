@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { FaStar } from 'react-icons/fa';  // React icon import
+import { FaStar } from 'react-icons/fa';  
 import FeaturedTask from './FeaturedTask';
 
 const FeaturedSection = () => {

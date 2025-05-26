@@ -2,7 +2,7 @@ import { useContext, useEffect, useState } from "react";
 import Swal from "sweetalert2";
 import { AuthContext } from "../context/authContext";
 import { useNavigate } from "react-router";
-import BidsModal from "../Components/BidsModal"; // Modal কম্পোনেন্ট import
+import BidsModal from "../Components/BidsModal"; 
 
 const MyPostedTasks = () => {
   const { user } = useContext(AuthContext);
@@ -120,7 +120,7 @@ const MyPostedTasks = () => {
             </tbody>
           </table>
 
-          {/* এখানে modal show করানো হবে */}
+         
           {showModal && <BidsModal bids={bids} onClose={() => setShowModal(false)} />}
         </div>
       </div>

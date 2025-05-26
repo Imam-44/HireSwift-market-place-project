@@ -11,7 +11,7 @@ const HomeLayouts = () => {
 
   useEffect(() => {
     setLoading(true);
-    const timer = setTimeout(() => setLoading(false), 500); // 0.5 second delay
+    const timer = setTimeout(() => setLoading(false), 500); 
     return () => clearTimeout(timer);
   }, [location]);
 

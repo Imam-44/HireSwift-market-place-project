@@ -16,7 +16,7 @@ const DetailsCard = ({ task, setBidChanged }) => {
     description,
   } = task || {};
 
-  const isOwner = user?.email === userEmail; // ✅ Owner check
+  const isOwner = user?.email === userEmail; 
 
   const handleBidSubmit = async (e) => {
     e.preventDefault();
@@ -38,7 +38,7 @@ const DetailsCard = ({ task, setBidChanged }) => {
         body: JSON.stringify(bid),
       });
 
-      const data = await res.json(); // ✅ এইখানে data ঠিকভাবে define
+      const data = await res.json(); 
 
       if (data.insertedId) {
         Swal.fire('Success!', 'Bid placed successfully', 'success');
