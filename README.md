@@ -2,7 +2,7 @@
 
 A full-featured freelance task marketplace where users can post tasks and freelancers can bid on them based on their skills, budget, and deadlines.
 
-🌐 **Live Website:** [https://your-client-site.netlify.app](https://your-client-site.netlify.app)  
+🌐 **Live Website:** [https://your-client-site.netlify.app](https://assignment-10-auth-dd74d.web.app/)  
 
 📦 **Client GitHub Repo:** [Client Repo Link](https://github.com/Imam-44/HireSwift-market-place-project.git)  
 🔗 **Server GitHub Repo:** [Server Repo Link](https://github.com/Imam-44/HireSwift-market-place-project-server-side.git)
