@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from "react-router";
 
 const FeaturedTask = ({ task }) => {
   const {
@@ -48,9 +49,11 @@ const FeaturedTask = ({ task }) => {
         </div>
       </div>
 
-      {/* <button className="w-full bg-pink-500 hover:bg-pink-600 text-white font-semibold py-2 px-4 rounded-xl transition-all duration-300 mt-6">
-        View Task
-      </button> */}
+      <Link to={'/browsetask'}>
+        <button className="w-full bg-pink-500 hover:bg-pink-600 text-white font-semibold py-2 px-4 rounded-xl transition-all duration-300 mt-6">
+          View all Task
+        </button>
+      </Link>
     </div>
   );
 };
