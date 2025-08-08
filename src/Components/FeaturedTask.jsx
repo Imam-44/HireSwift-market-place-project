@@ -48,9 +48,9 @@ const FeaturedTask = ({ task }) => {
         </div>
       </div>
 
-      <button className="w-full bg-pink-500 hover:bg-pink-600 text-white font-semibold py-2 px-4 rounded-xl transition-all duration-300 mt-6">
+      {/* <button className="w-full bg-pink-500 hover:bg-pink-600 text-white font-semibold py-2 px-4 rounded-xl transition-all duration-300 mt-6">
         View Task
-      </button>
+      </button> */}
     </div>
   );
 };

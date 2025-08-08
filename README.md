@@ -1,29 +1,63 @@
- 
- 
- 
- 
- 
- 
- 
- 
- 
- 💡 Features:
-- 🔐 Email & Google-based Authentication
-- 🧾 Add, Update, Delete, and View Personal Tasks
-- 📌 Browse and Bid on Available Freelance Tasks
-- 🌓 Dark/Light Theme Toggle + Animated UI
-- 📱 Fully Responsive Design for all devices
+# 🧑‍💻 Freelance Task Marketplace 
 
+A full-featured freelance task marketplace where users can post tasks and freelancers can bid on them based on their skills, budget, and deadlines.
 
-All Npm Package: [
-  1. swiper for hero slider,
-  2. react icon for icons,
-  3. react toastify for toast,
-  4.firebase for authentication,
-  6. use typewriter for hero,
- 
-]
+🌐 **Live Website:** [https://your-client-site.netlify.app](https://your-client-site.netlify.app)  
 
+📦 **Client GitHub Repo:** [Client Repo Link](https://github.com/Imam-44/HireSwift-market-place-project.git)  
+🔗 **Server GitHub Repo:** [Server Repo Link](https://github.com/Imam-44/HireSwift-market-place-project-server-side.git)
 
-Website name: HireSwift,
-live link: https://assignment-10-auth-dd74d.web.app/,
+---
+
+## 📸 Screenshot
+![Freelance Task Marketplace Screenshot](https://i.ibb.co.com/B2FGhXMt/assignment-10.png)
+
+---
+
+## ⚙️ Technologies Used
+
+### 🚀 Client-Side:
+- React.js
+- React Router DOM
+- Firebase Auth
+- Axios
+- Tailwind CSS + DaisyUI
+- React Toastify / SweetAlert2
+- Lottie / Typewriter / Tooltip / Reveal (any one used)
+- Date Picker
+- JWT (Token Based Auth)
+- Context API
+
+### 🔧 Server-Side:
+- Node.js
+- Express.js
+- MongoDB
+- CORS
+- dotenv
+- JWT
+- Vercel Deployment
+
+---
+
+## ✨ Core Features
+
+- 🔐 User Authentication (Email/Password + Google)
+- 🔒 Protected Routes (Login required)
+- 📋 Add, Update, and Delete Tasks
+- 🧾 Dynamic Task Listing with Deadline Sorting
+- 🔍 Browse Tasks & View Details
+- 🎯 Users Can Place Bids on Tasks
+- 📈 See My Posted Tasks with Edit/Delete
+- ⚙️ Real-time Bid Count Update
+- 🌙 Light/Dark Mode Toggle
+- 🖼️ Slider + Featured Tasks on Home Page
+- 💻 Fully Responsive on Mobile, Tablet & Desktop
+- ⚠️ 404 Page & Loading Spinners
+
+---
+
+## 🌱 Environment Variables
+
+Make sure to set the following variables in `.env`:
+
+#### 🔐 For Client:

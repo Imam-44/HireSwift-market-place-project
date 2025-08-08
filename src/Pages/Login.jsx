@@ -20,9 +20,9 @@ const Login = () => {
     //firebase log in send
     logInUser(email, password)
       .then(result => {
-        const user = result.user;
+       const user = result.user;
         if (user) {
-          Swal.fire({
+          Swal .fire({
             icon: "success",
             title: "your account log in successfully",
             showConfirmButton: false,

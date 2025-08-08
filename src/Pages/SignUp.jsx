@@ -54,7 +54,7 @@ const hanldeSignUp = e => {
           timer: 1000
         });
 
-        navigate('/');
+      
       });
     })
     .catch((error) => {
